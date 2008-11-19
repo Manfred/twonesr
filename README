@@ -3,6 +3,6 @@
 I was wondering how the Twones API (http://www.twones.com/) worked, I guess this is the result.
 
 Dependencies:
-  %w(nap json)
+  %w(nap json dm-core)
 
 -- Copyright (C) Manfred Stienstra --

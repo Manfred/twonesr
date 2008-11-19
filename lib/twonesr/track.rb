@@ -1,12 +1,12 @@
 module Twonesr
   class Track
-    ATTRIBUTES = [:creator, :title, :year, :album, :duration, :trackNum]
-    attr_accessor *ATTRIBUTES
-    
-    def initialize(attributes={})
-      ATTRIBUTES.each do |attribute|
-        send("#{attribute}=", attributes[attribute]) if attributes[attribute]
-      end
-    end
+    include DataMapper::Resource
+    property :id,       Serial
+    property :creator,  String
+    property :title,    String
+    property :year,     Integer
+    property :album,    String
+    property :duration, Integer
+    property :trackNum, Integer
   end
-end
+end 
