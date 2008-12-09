@@ -14,4 +14,9 @@ describe "Twonesr" do
     Twonesr.playlist.should == Twonesr.playlist
     Twonesr.playlist.should.be.kind_of(Twonesr::Playlist)
   end
+  
+  it "should coerce all the global information to a hash" do
+    hash = Twonesr.to_hash
+    hash.should.has_key('playlist')
+  end
 end

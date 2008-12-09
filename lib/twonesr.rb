@@ -16,6 +16,10 @@ module Twonesr
       @playlist ||= Twonesr::Playlist.new
     end
     
+    def to_hash
+      { 'playlist' => playlist.to_hash.merge(connection.to_hash) }
+    end
+    
     attr_accessor :service_name
   end
   self.service_name = '%{ Twonesr }'
