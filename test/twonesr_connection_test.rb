@@ -1,20 +1,25 @@
 require File.expand_path('../test_helper', __FILE__)
 
 describe "Connection" do
-  before do
-    @credentials = { :username => 'Jenny', :token => 'fromtheblock12' }
-    Twonesr::Connection.credentials = @credentials
+  it "should store relevant attributes" do
+    username = 'Jenny'; password = 'fromtheblock23'
+    connection = Twonesr::Connection.new(:username => username, :password => password)
+    connection.username.should == username
+    connection.password.should == password
   end
-  
-  it "should hold credentials" do
-    Twonesr::Connection.credentials.should == @credentials
+end
+
+describe "A Connection" do
+  before do
+    @connection = Factory.connection.instantiate
   end
   
   it "should coerce to a hash" do
-    Twonesr::Connection.to_hash.should == {
+    @connection.token = 'ad34dg56'
+    @connection.to_hash.should == {
       'meta' => [
-        { 'http://twones.com/ns/jspf#authName'  => @credentials[:username] },
-        { 'http://twones.com/ns/jspf#authToken' => @credentials[:token] }
+        { 'http://twones.com/ns/jspf#authName'  => @connection.username },
+        { 'http://twones.com/ns/jspf#authToken' => @connection.token }
       ]
     }
   end

@@ -2,6 +2,7 @@ class Factory
   class << self
     def attributes
       {
+        :connection => { :username => 'Jenny', :password => 'fromtheblock12' },
         :track => { :creator => 'Seymour Bits', :title => 'You Must Be The Bass' },
         :playlist => { :identifier => 'iTunes' }
       }

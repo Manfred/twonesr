@@ -8,10 +8,6 @@ $:.unshift(File.expand_path('../lib', __FILE__))
 
 module Twonesr
   class << self
-    def connection
-      Twonesr::Connection
-    end
-    
     def playlist
       @playlist ||= Twonesr::Playlist.new
     end
@@ -20,7 +16,12 @@ module Twonesr
       { 'playlist' => playlist.to_hash.merge(connection.to_hash) }
     end
     
+    def establish_connection(attributes={})
+      @connection ||= Twonesr::Connection.new(attributes)
+    end
+    
     attr_accessor :service_name
+    attr_accessor :connection
   end
   self.service_name = '%{ Twonesr }'
 end
@@ -31,3 +32,5 @@ require 'twonesr/track'
 
 DataMapper.setup(:default, 'sqlite3::memory:')
 DataMapper.auto_migrate!
+
+Twonesr.establish_connection
