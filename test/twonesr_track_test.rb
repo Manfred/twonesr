@@ -10,7 +10,13 @@ end
 
 describe "A Track" do
   before do
-    @attributes = { :creator => 'Seymour Bits', :title => 'You Must Be The Bass' }
-    @track = Twonesr::Track.new(@attributes)
+    @track = Factory.track.instantiate
+  end
+  
+  it "should coerce to hash" do
+    @track.to_hash.should == {
+      'creator' => @track.creator,
+      'title'   => @track.title
+    }
   end
 end

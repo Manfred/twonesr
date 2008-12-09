@@ -8,5 +8,14 @@ module Twonesr
     property :album,    String
     property :duration, Integer
     property :trackNum, Integer
+    
+    belongs_to :playlist
+    
+    def to_hash
+      {
+        'creator' => creator,
+        'title'   => title
+      }
+    end
   end
-end 
+end

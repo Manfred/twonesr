@@ -3,6 +3,6 @@
 I was wondering how the Twones API (http://www.twones.com/) worked, I guess this is the result.
 
 Dependencies:
-  %w(nap json dm-core)
+  %w(nap json dm-core do_sqlite3 launchy)
 
 -- Copyright (C) Manfred Stienstra --

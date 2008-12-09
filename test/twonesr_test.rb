@@ -9,4 +9,9 @@ describe "Twonesr" do
     Twonesr.service_name = 'Changed'
     Twonesr.service_name.should == 'Changed'
   end
+  
+  it "should have a global playlist" do
+    Twonesr.playlist.should == Twonesr.playlist
+    Twonesr.playlist.should.be.kind_of(Twonesr::Playlist)
+  end
 end
