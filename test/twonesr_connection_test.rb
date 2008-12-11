@@ -16,7 +16,7 @@ describe "A Connection" do
   
   it "should authenticate with correct credentials" do
     REST.expects(:post).with(
-      'http://www.townes.com/login',
+      'http://www.twones.com/login',
       '_method=POST&data%5BUser%5D%5Busername%5D=Jenny&data%5BUser%5D%5Bpassword%5D=fromtheblock12',
       {'Content-Type' => 'application/x-www-form-urlencoded'}
     ).returns(Response.for('successful-login'))
@@ -27,7 +27,7 @@ describe "A Connection" do
   
   it "should not authenticate with incorrect credentials" do
     REST.expects(:post).with(
-      'http://www.townes.com/login',
+      'http://www.twones.com/login',
       '_method=POST&data%5BUser%5D%5Busername%5D=Jenny&data%5BUser%5D%5Bpassword%5D=fromtheblock12',
       {'Content-Type' => 'application/x-www-form-urlencoded'}
     ).returns(Response.for('failed-login'))
@@ -42,7 +42,7 @@ end
 describe "A connected Connection" do
   before do
     REST.stubs(:post).with(
-      'http://www.townes.com/login',
+      'http://www.twones.com/login',
       '_method=POST&data%5BUser%5D%5Busername%5D=Jenny&data%5BUser%5D%5Bpassword%5D=fromtheblock12',
       {'Content-Type' => 'application/x-www-form-urlencoded'}
     ).returns(Response.for('successful-login'))

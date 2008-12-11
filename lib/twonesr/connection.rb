@@ -5,7 +5,7 @@ module Twonesr
     class ConnectionError < StandardError; end
     
     API_TOKEN = '36288e7ec80fe74f52580a6eb0b712529a9824e7'
-    DOMAIN    = 'www.townes.com'
+    DOMAIN    = 'www.twones.com'
     
     attr_accessor :username
     attr_accessor :password
