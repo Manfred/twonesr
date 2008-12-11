@@ -1,6 +1,11 @@
 require File.expand_path('../test_helper', __FILE__)
 
 describe "Twonesr" do
+  before do
+    Twonesr.establish_connection
+    Twonesr.connection.cookie = 'cookie'
+  end
+  
   it "should know it's own default service name" do
     Twonesr.service_name.should == '%{ Twonesr }'
   end

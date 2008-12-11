@@ -5,6 +5,7 @@ require 'rest'
 require 'json'
 
 $:.unshift(File.expand_path('../lib', __FILE__))
+require 'core_ext'
 
 module Twonesr
   class << self
@@ -12,12 +13,12 @@ module Twonesr
       @playlist ||= Twonesr::Playlist.new
     end
     
-    def to_hash
-      { 'playlist' => playlist.to_hash.merge(connection.to_hash) }
-    end
-    
     def establish_connection(attributes={})
       @connection ||= Twonesr::Connection.new(attributes)
+    end
+    
+    def to_hash
+      { 'playlist' => playlist.to_hash.merge(connection.to_hash) }
     end
     
     attr_accessor :service_name
@@ -32,5 +33,3 @@ require 'twonesr/track'
 
 DataMapper.setup(:default, 'sqlite3::memory:')
 DataMapper.auto_migrate!
-
-Twonesr.establish_connection
