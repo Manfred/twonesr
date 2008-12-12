@@ -12,10 +12,13 @@ module Twonesr
     belongs_to :playlist
     
     def to_hash
-      {
-        'creator' => creator,
-        'title'   => title
-      }
+      hash = {}
+      %w(creator title year album duration trackNum).each do |key|
+        value = send(key)
+        hash[key] = value unless value.blank?
+      end
+      hash['meta'] = [{ 'http://twones.com/ns/jspf#metaService' => 'itunes' }]
+      hash
     end
   end
 end

@@ -16,7 +16,8 @@ describe "A Track" do
   it "should coerce to hash" do
     @track.to_hash.should == {
       'creator' => @track.creator,
-      'title'   => @track.title
+      'title'   => @track.title,
+      'meta'    => [{ 'http://twones.com/ns/jspf#metaService' => 'itunes' }]
     }
   end
 end

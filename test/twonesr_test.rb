@@ -3,7 +3,6 @@ require File.expand_path('../test_helper', __FILE__)
 describe "Twonesr" do
   before do
     Twonesr.establish_connection
-    Twonesr.connection.cookie = 'cookie'
   end
   
   it "should know it's own default service name" do
@@ -23,5 +22,20 @@ describe "Twonesr" do
   it "should coerce all the global information to a hash" do
     hash = Twonesr.to_hash
     hash.should.has_key('playlist')
+  end
+end
+
+describe "Twonesr, when connected" do
+  before do
+    connection = Factory.connection.instantiate
+    connection.cookie = Response.attributes_for('successful-login')[1]['set-cookie']
+    connection.token = '36288e7ec80fe74f52580a6eb0b712529a9824e7'
+    
+    Twonesr.connection = connection
+  end
+  
+  it "should post the current playlist" do
+    Twonesr.connection.expects(:post).with(Twonesr::Routes.add_playlist_url, {'playlist' => Twonesr.to_json})
+    Twonesr.post
   end
 end
