@@ -6,6 +6,10 @@ module Twonesr
     
     has n, :tracks
     
+    def <<(track)
+      tracks << track
+    end
+    
     def to_hash
       {
         'track'      => tracks.map(&:to_hash),

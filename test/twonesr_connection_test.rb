@@ -18,7 +18,7 @@ describe "A Connection" do
     REST.expects(:post).with(
       'http://www.twones.com/login',
       '_method=POST&data%5BUser%5D%5Busername%5D=Jenny&data%5BUser%5D%5Bpassword%5D=fromtheblock12',
-      {'Content-Type' => 'application/x-www-form-urlencoded'}
+      {'Content-Type' => 'application/x-www-form-urlencoded; charset=utf-8'}
     ).returns(Response.for('successful-login'))
     
     @connection.authenticate
@@ -29,12 +29,12 @@ describe "A Connection" do
     REST.expects(:post).with(
       'http://www.twones.com/login',
       '_method=POST&data%5BUser%5D%5Busername%5D=Jenny&data%5BUser%5D%5Bpassword%5D=fromtheblock12',
-      {'Content-Type' => 'application/x-www-form-urlencoded'}
+      {'Content-Type' => 'application/x-www-form-urlencoded; charset=utf-8'}
     ).returns(Response.for('failed-login'))
     
     lambda {
       @connection.authenticate
-    }.should.raise(Twonesr::Connection::ConnectionError)
+    }.should.raise(Twonesr::ConnectionError)
     @connection.cookie.should.be.nil
   end
 end
@@ -44,7 +44,7 @@ describe "A connected Connection" do
     REST.stubs(:post).with(
       'http://www.twones.com/login',
       '_method=POST&data%5BUser%5D%5Busername%5D=Jenny&data%5BUser%5D%5Bpassword%5D=fromtheblock12',
-      {'Content-Type' => 'application/x-www-form-urlencoded'}
+      {'Content-Type' => 'application/x-www-form-urlencoded; charset=utf-8'}
     ).returns(Response.for('successful-login'))
     @connection = Factory.connection.instantiate
     @connection.authenticate

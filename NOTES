@@ -1,6 +1,13 @@
-Twonesr.connection.credentials = { :username => 'manfred', :password => 'fl1pper10' }
+credentials = {
+  :username => 'Manfred',
+  :password => 'wrong'
+}
+
+Twonesr.establish_connection(credentials)
+Twonesr.connection.authenticate
 Twonesr.playlist << Twonesr::Track.new({
   :creator => "Quasimoto",
   :title => "The Clown (Episode C)"
 })
+
 Twonesr.playlist.post
