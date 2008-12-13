@@ -9,12 +9,16 @@ require 'core_ext'
 
 module Twonesr
   class << self
-    def playlist
-      @playlist ||= Twonesr::Playlist.new(:identifier => 'itunes')
+    def establish_connection(attributes={})
+      if @connection.nil?
+        @connection = Twonesr::Connection.new(attributes)
+        @connection.authenticate
+        @connection.retrieve_token
+      end
     end
     
-    def establish_connection(attributes={})
-      @connection = Twonesr::Connection.new(attributes)
+    def playlist
+      @playlist ||= Twonesr::Playlist.new(:identifier => 'itunes')
     end
     
     def post

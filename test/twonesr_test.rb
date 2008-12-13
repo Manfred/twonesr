@@ -1,10 +1,6 @@
 require File.expand_path('../test_helper', __FILE__)
 
 describe "Twonesr" do
-  before do
-    Twonesr.establish_connection
-  end
-  
   it "should know it's own default service name" do
     Twonesr.service_name.should == '%{ Twonesr }'
   end
@@ -19,9 +15,14 @@ describe "Twonesr" do
     Twonesr.playlist.should.be.kind_of(Twonesr::Playlist)
   end
   
-  it "should coerce all the global information to a hash" do
-    hash = Twonesr.to_hash
-    hash.should.has_key('playlist')
+  it "should establish a connection" do
+    credentials = {:username => 'Jenny', :password => 'fromtheblock12'}
+    connection = Twonesr::Connection.new(credentials)
+    connection.expects(:authenticate)
+    connection.expects(:retrieve_token)
+    Twonesr::Connection.expects(:new).with(credentials).returns(connection)
+    
+    Twonesr.establish_connection(credentials)
   end
 end
 
@@ -32,6 +33,11 @@ describe "Twonesr, when connected" do
     connection.token = '36288e7ec80fe74f52580a6eb0b712529a9824e7'
     
     Twonesr.connection = connection
+  end
+  
+  it "should coerce all the global information to a hash" do
+    hash = Twonesr.to_hash
+    hash.should.has_key('playlist')
   end
   
   it "should post the current playlist" do

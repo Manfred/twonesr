@@ -52,7 +52,7 @@ end
 describe "An authenticated Connection" do
   before do
     @connection = Factory.connection.instantiate
-    @connection.cookie = Response.attributes_for('successful-login')[1]['set-cookie']
+    @connection.cookie = Response.attributes_for('successful-login')[1]['set-cookie'].first
   end
   
   it "should be autenticated" do
@@ -61,6 +61,10 @@ describe "An authenticated Connection" do
   
   it "should not be connected" do
     @connection.should.not.be.connected
+  end
+  
+  it "should have an authentication cookie" do
+    @connection.authentication_cookie.should == 'CakeCookie[User]=Q2FrZQ%3D%3D.DqL6WjKugx8KnXVpbadaIJA1Q99UqbJQiNvMX1VkVnBPz7IzKThpmrHHND%2BVl0U75jK56IbIZCSgpUTctGOsPcovHWI%3D'
   end
   
   it "should retrieve a token from the welcome page" do
@@ -93,6 +97,7 @@ describe "A connected Connection" do
     @connection = Factory.connection.instantiate
     @connection.cookie = Response.attributes_for('successful-login')[1]['set-cookie']
     @connection.token = '36288e7ec80fe74f52580a6eb0b712529a9824e7'
+    Twonesr.connection = @connection
   end
   
   it "should be autenticated" do
@@ -101,6 +106,28 @@ describe "A connected Connection" do
   
   it "should be connected" do
     @connection.should.be.connected
+  end
+  
+  it "should post to Twones" do
+    url     = Twonesr::Routes.add_playlist_url
+    data    = { 'playlist' => Twonesr.to_json }
+    headers = { 'Content-Type' => 'application/x-www-form-urlencoded; charset=utf-8' }
+    
+    REST.expects(:post).with(url, data.url_encode, headers).returns(Response.for('successful-playlist-add'))
+    
+    Twonesr.post
+  end
+  
+  it "should raise a ConnectionError when something goes wrong" do
+    url     = Twonesr::Routes.add_playlist_url
+    data    = { 'playlist' => Twonesr.to_json }
+    headers = { 'Content-Type' => 'application/x-www-form-urlencoded; charset=utf-8' }
+    
+    REST.expects(:post).with(url, data.url_encode, headers).returns(Response.for('failed-playlist-add'))
+    
+    lambda {
+      Twonesr.post
+    }.should.raise(Twonesr::ConnectionError)
   end
   
   it "should coerce to a hash" do

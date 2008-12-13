@@ -1,4 +1,6 @@
 Autotest.add_hook :initialize do |at|
+  ALL_TESTS = %r%^test/.*_test\.rb%
+  
   at.unit_diff = 'cat'
   at.failed_results_re = /^\s+\d+\) (?:Failure|Error):\n(.*?)\((.*?)\)\n\[([^:]*):.*\]/
   
@@ -11,8 +13,12 @@ Autotest.add_hook :initialize do |at|
     "test/#{sqwat}_test.rb"
   end
   
-  at.add_mapping %r%^test/.*_test\.rb% do |filename, _|
+  at.add_mapping ALL_TESTS do |filename, _|
     filename
+  end
+  
+  at.add_mapping %r%^test/(test_lib|fixtures)% do
+    at.files_matching(ALL_TESTS)
   end
   
   class << at

@@ -35,6 +35,21 @@ module Response
         'date' => ['Tue, 09 Dec 2008 21:02:30 GMT'],
         'content-type' => ['text/html; charset=utf-8']
       }
+    ],
+    'successful-playlist-add' => [
+      200,
+      {
+        'date' => ['Tue, 09 Dec 2008 21:02:30 GMT'],
+        'content-type' => ['text/html; charset=utf-8']
+      }
+    ],
+    'failed-playlist-add' => [
+      520,
+      {
+        'date' => ['Tue, 09 Dec 2008 21:02:30 GMT'],
+        'content-type' => ['text/html; charset=utf-8']
+      },
+      'Service not found (520)'
     ]
   }
   

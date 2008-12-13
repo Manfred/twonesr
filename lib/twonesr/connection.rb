@@ -34,17 +34,6 @@ module Twonesr
       cookie.split(';').first
     end
     
-    def retrieve_token
-      headers = { 'Cookie' => authentication_cookie }
-      response = REST.get(Twonesr::Routes.welcome_url, headers)
-      if response.ok? and (match = /TwonesUtil\.addOn\.authenticate\([^,]*, "([a-z0-9]*)"\);/.match(response.body))
-        @token = match[1]
-      else
-        @token = nil
-        raise Twonesr::ConnectionError.new("Failed to retrieve token", response)
-      end
-    end
-    
     def authenticate
       headers = { 'Content-Type' => 'application/x-www-form-urlencoded; charset=utf-8' }
       params  = { '_method' => 'POST',
@@ -59,6 +48,17 @@ module Twonesr
         raise Twonesr::ConnectionError.new("Authentication failed", response)
       end
       response
+    end
+    
+    def retrieve_token
+      headers = { 'Cookie' => authentication_cookie }
+      response = REST.get(Twonesr::Routes.welcome_url, headers)
+      if response.ok? and (match = /TwonesUtil\.addOn\.authenticate\([^,]*, "([a-z0-9]*)"\);/.match(response.body))
+        @token = match[1]
+      else
+        @token = nil
+        raise Twonesr::ConnectionError.new("Failed to retrieve token", response)
+      end
     end
     
     def post(url, data)
