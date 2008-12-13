@@ -1,5 +1,6 @@
 require 'rubygems' rescue LoadError
 require 'active_support'
+require 'hpricot'
 require 'dm-core'
 require 'rest'
 require 'json'
@@ -13,7 +14,7 @@ module Twonesr
       if @connection.nil?
         @connection = Twonesr::Connection.new(attributes)
         @connection.authenticate
-        @connection.retrieve_token
+        @connection.retrieve_account_information
       end
     end
     
@@ -23,6 +24,10 @@ module Twonesr
     
     def post
       connection.post(Twonesr::Routes.add_playlist_url, {'playlist' => to_json})
+    end
+    
+    def messages
+      @messages ||= Twonesr::Messages.new
     end
     
     def to_hash
@@ -41,6 +46,7 @@ end
 
 require 'twonesr/routes'
 require 'twonesr/connection'
+require 'twonesr/messages'
 require 'twonesr/playlist'
 require 'twonesr/track'
 

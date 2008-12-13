@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Users - Twones</title>
+	<link href="http://www.twones.com/img/icon32.png" type="image/x-icon" rel="shortcut icon"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<link rel="stylesheet" type="text/css" href="/css/twones_v2.css?r1073" />
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+	<link rel="application-icon" href="/application-icon.png" />
+	<link rel="fluid-icon" href="/application-icon.png" />
+
+	<script type="text/javascript" src="/js/prototype-1.6.0.3.js"></script>
+	<script type="text/javascript" src="/js/scriptaculous/scriptaculous.js"></script>
+	<script type="text/javascript" src="/js/twones_v2.js?r922"></script>
+</head>
+<body>
+	<div id="header">
+		<a href="/" title="Twones Home"><img src="/img/logo.png" border="0" alt="Twones" class="twones_logo" width="200" height="32" /></a>
+		<div class="header_search">
+			<form method="get" action="/music/search"><div class="inline"><input name="term" type="text" class="header_search_textinput" value="artist / track" onfocus="if(this.value == &#039;artist / track&#039;) { this.value = &#039;&#039;; }" onblur="if(this.value == &#039;&#039;) { this.value = &#039;artist / track&#039;; }" id="TrackTerm" /></div>&#160;&#160;<div class="inline"><input type="submit" label="Find" class="header_search_submit" value="Find" /></div></form>		</div>
+		<div id="header_profilecorner">
+<ul id="header_profilemenu">
+	<li><a href="/pages/help#feedback" style="color: #F26522" onclick="if(GSFN){GSFN.show(); return false;}">feedback</a></li> -
+	<li><a href="/">home</a></li> -
+	<li><a href="/settings">settings</a></li> -
+	<li><a href="/pages/help">help</a></li> -
+	<li><a href="/invite" title="Invite people to Twones">invite</a></li> - <li><a href="/logout">logout</a></li><li>-</li><li>Manfred<a href="/users/home" title="Manfred"><img src="/img/User/002/1030/32x32_Afdfecb92.jpg" width="32" height="32" class="profilecorner_avatar" alt="Manfred" /></a>:</li>	</ul>
+</div>
+		<div id="broadcast-line" style="display:none;padding: 3px 6px; position: absolute; top: 62px; left: 0px; background-color: #ff00ff; width: 100%; color: white;">
+			Attention: you are not using the latest Firefox Tracker add-on.
+			<a href="/pages/firefox-add-on">Install the Twones Add-on here</a>!
+		</div>
+	</div>
+
+<div class="tabs">
+	<ul id="primary">
+	<li class="tab_avatar"><a href="/Manfred" id="tab_avatar" title="Home of Manfred" class=""><img src="/img/User/002/1030/32x32_Afdfecb92.jpg" width="32" height="32" alt="Manfred" />me</a></li>	<li><a href="/Manfred/timeline" id="" title="Music activity" class="">music activity</a></li><li><a href="/recommendations/index" id="standard_tabs_tab_recommended" title="Your recommended tracks" class="">recommended</a></li><li><a href="/Manfred/library" id="" title="Stored tracks" class="">library</a></li></ul><ul id="primary_right"><li><a href="/heavyrotation/profile/Manfred" id="" title="Most played tracks" class="">heavy rotation</a></li><li><a href="/Manfred/friends" id="" title="Fans and friends" class="">friends</a></li></ul></div>
+<div id="talk_lines">
+	<div class="right_box_top">
+		<a href="/users/messages/collection:friends/id:1030" id="talk_refresh" onclick=" event.returnValue = false; return false;" title="Refresh"><img src="/img/spinner_green.gif" id="talk_refresh_spinner" style="display:none" alt="" /></a><script type="text/javascript">
+//<![CDATA[
+Event.observe('talk_refresh', 'click', function(event) { new Ajax.Updater('messages','/users/messages/collection:friends/id:1030', {asynchronous:true, evalScripts:true, onComplete:function(request, json) {Element.hide('talk_refresh_spinner');}, onLoading:function(request) {Element.show('talk_refresh_spinner');}, requestHeaders:['X-Update', 'messages']}) }, false);
+//]]>
+</script>			<div class="left">
+<a href="/users/messages/collection:solo/id:1030" id="link1351321903" onclick=" event.returnValue = false; return false;" title="Refresh" class="">from me</a><script type="text/javascript">
+//<![CDATA[
+Event.observe('link1351321903', 'click', function(event) { new Ajax.Updater('messages','/users/messages/collection:solo/id:1030', {asynchronous:true, evalScripts:true, onComplete:function(request, json) {Element.hide('talk_refresh_spinner');}, onLoading:function(request) {Element.show('talk_refresh_spinner');}, requestHeaders:['X-Update', 'messages']}) }, false);
+//]]>
+</script> - <a href="/users/messages/collection:friends/id:1030" id="link1342749140" onclick=" event.returnValue = false; return false;" title="Refresh" class="current">with friends</a><script type="text/javascript">
+//<![CDATA[
+Event.observe('link1342749140', 'click', function(event) { new Ajax.Updater('messages','/users/messages/collection:friends/id:1030', {asynchronous:true, evalScripts:true, onComplete:function(request, json) {Element.hide('talk_refresh_spinner');}, onLoading:function(request) {Element.show('talk_refresh_spinner');}, requestHeaders:['X-Update', 'messages']}) }, false);
+//]]>
+</script> - <a href="/users/messages/collection:replies" id="link575779739" onclick=" event.returnValue = false; return false;" title="Refresh" class="">replies</a><script type="text/javascript">
+//<![CDATA[
+Event.observe('link575779739', 'click', function(event) { new Ajax.Updater('messages','/users/messages/collection:replies', {asynchronous:true, evalScripts:true, onComplete:function(request, json) {Element.hide('talk_refresh_spinner');}, onLoading:function(request) {Element.show('talk_refresh_spinner');}, requestHeaders:['X-Update', 'messages']}) }, false);
+//]]>
+</script>			</div>
+	</div>
+<div class="talk_msgs">
+		<div class="talk_msgs_msg" id="talk_message_6752">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/Pepijn" title="Pepijn">Pepijn</a>
+			<span>2 days, 5 hours ago</span>
+			<img src="/img/User/001/104/32x32_A1222359024.jpg" width="32" height="32" class="talk_msg_avatar" alt="Pepijn" />		</div>
+		<div class="talk_msgs_msg_body">
+			Ballin;!						<br />
+			<a class="respond" title="Respond to Pepijn" href="javascript:;" onClick="TwonesUtil.message.respond('Pepijn', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6357">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/Sandder" title="Sandder">Sandder</a>
+			<span>1 week, 2 days ago</span>
+			<img src="/img/User/001/870/32x32_A7dac4171.jpg" width="32" height="32" class="talk_msg_avatar" alt="Sandder" />		</div>
+		<div class="talk_msgs_msg_body">
+			Kunnen we elkaars smaak ineens niet meer flamen?						<br />
+			<a class="respond" title="Respond to Sandder" href="javascript:;" onClick="TwonesUtil.message.respond('Sandder', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6356">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/Sandder" title="Sandder">Sandder</a>
+			<span>1 week, 2 days ago</span>
+			<img src="/img/User/001/870/32x32_A7dac4171.jpg" width="32" height="32" class="talk_msg_avatar" alt="Sandder" />		</div>
+		<div class="talk_msgs_msg_body">
+			Wat is er gebeurd?						<br />
+			<a class="respond" title="Respond to Sandder" href="javascript:;" onClick="TwonesUtil.message.respond('Sandder', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6345">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/Pepijn" title="Pepijn">Pepijn</a>
+			<span>1 week, 3 days ago</span>
+			<img src="/img/User/001/104/32x32_A1222359024.jpg" width="32" height="32" class="talk_msg_avatar" alt="Pepijn" />		</div>
+		<div class="talk_msgs_msg_body">
+			Ey...!						<br />
+			<a class="respond" title="Respond to Pepijn" href="javascript:;" onClick="TwonesUtil.message.respond('Pepijn', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6337">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/tonyplayer" title="tonyplayer">tonyplayer</a>
+			<span>1 week, 3 days ago</span>
+			<img src="/img/User/001/691/32x32_A1222699038.jpg" width="32" height="32" class="talk_msg_avatar" alt="tonyplayer" />		</div>
+		<div class="talk_msgs_msg_body">
+			Tell your fellow twoners Tony Player @ ZONDE 7th december. smeer het woord, smeer die liefde. Mail voor gasten lijst lukas@tonyplayer.com 						<br />
+			<a class="respond" title="Respond to tonyplayer" href="javascript:;" onClick="TwonesUtil.message.respond('tonyplayer', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6336">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/tonyplayer" title="tonyplayer">tonyplayer</a>
+			<span>1 week, 3 days ago</span>
+			<img src="/img/User/001/691/32x32_A1222699038.jpg" width="32" height="32" class="talk_msg_avatar" alt="tonyplayer" />		</div>
+		<div class="talk_msgs_msg_body">
+			Dus wordt fan van <a href="/tonyplayerZONDE">@tonyplayerZONDE</a> en breng je bangers hitjes en klassiekers naar de Paradiso! Play on Players. 
+
+						<br />
+			<a class="respond" title="Respond to tonyplayer" href="javascript:;" onClick="TwonesUtil.message.respond('tonyplayer', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6335">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/tonyplayer" title="tonyplayer">tonyplayer</a>
+			<span>1 week, 3 days ago</span>
+			<img src="/img/User/001/691/32x32_A1222699038.jpg" width="32" height="32" class="talk_msg_avatar" alt="tonyplayer" />		</div>
+		<div class="talk_msgs_msg_body">
+			Vanaf 7 december elke maand Tony Player (ofwel de offline personificatie van twones) in de Paradiso Basement! 						<br />
+			<a class="respond" title="Respond to tonyplayer" href="javascript:;" onClick="TwonesUtil.message.respond('tonyplayer', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6334">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/lukas" title="lukas">lukas</a>
+			<span>1 week, 3 days ago</span>
+			<img src="/img/User/001/84/32x32_A1224618064.jpg" width="32" height="32" class="talk_msg_avatar" alt="lukas" />		</div>
+		<div class="talk_msgs_msg_body">
+			Tell your fellow twoners Tony Player @ ZONDE 7th december. smeer het woord, smeer die liefde. Mail voor gasten lijst lukas@tonyplayer.com 						<br />
+			<a class="respond" title="Respond to lukas" href="javascript:;" onClick="TwonesUtil.message.respond('lukas', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6333">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/lukas" title="lukas">lukas</a>
+			<span>1 week, 3 days ago</span>
+			<img src="/img/User/001/84/32x32_A1224618064.jpg" width="32" height="32" class="talk_msg_avatar" alt="lukas" />		</div>
+		<div class="talk_msgs_msg_body">
+			Dus wordt fan van <a href="/tonyplayerZONDE">@tonyplayerZONDE</a> en breng je bangers hitjes en klassiekers naar de Paradiso! Play on Players. 						<br />
+			<a class="respond" title="Respond to lukas" href="javascript:;" onClick="TwonesUtil.message.respond('lukas', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6332">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/lukas" title="lukas">lukas</a>
+			<span>1 week, 3 days ago</span>
+			<img src="/img/User/001/84/32x32_A1224618064.jpg" width="32" height="32" class="talk_msg_avatar" alt="lukas" />		</div>
+		<div class="talk_msgs_msg_body">
+			Vanaf 7 december elke maand Tony Player (ofwel de offline personificatie van twones) in de Paradiso Basement! 						<br />
+			<a class="respond" title="Respond to lukas" href="javascript:;" onClick="TwonesUtil.message.respond('lukas', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6321">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/Sjakie" title="Sjakie">Sjakie</a>
+			<span>1 week, 3 days ago</span>
+			<img src="/img/User/001/693/32x32_A1226055062.jpg" width="32" height="32" class="talk_msg_avatar" alt="Sjakie" />		</div>
+		<div class="talk_msgs_msg_body">
+			<a href="/noott">@noott</a> Laat geworden gister? Heb je nieuwe muziek? Tips?					<br />
+			<a class="respond" title="Respond to Sjakie" href="javascript:;" onClick="TwonesUtil.message.respond('Sjakie', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6295">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/Pepijn" title="Pepijn">Pepijn</a>
+			<span>1 week, 4 days ago</span>
+			<img src="/img/User/001/104/32x32_A1222359024.jpg" width="32" height="32" class="talk_msg_avatar" alt="Pepijn" />		</div>
+		<div class="talk_msgs_msg_body">
+			<a href="/deReiger">@deReiger</a>, maar echt						<br />
+			<a class="respond" title="Respond to Pepijn" href="javascript:;" onClick="TwonesUtil.message.respond('Pepijn', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6292">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/Pepijn" title="Pepijn">Pepijn</a>
+			<span>1 week, 4 days ago</span>
+			<img src="/img/User/001/104/32x32_A1222359024.jpg" width="32" height="32" class="talk_msg_avatar" alt="Pepijn" />		</div>
+		<div class="talk_msgs_msg_body">
+			<a href="/deReiger">@deReiger</a>, dat is er ook wel weer eentje						<br />
+			<a class="respond" title="Respond to Pepijn" href="javascript:;" onClick="TwonesUtil.message.respond('Pepijn', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6287">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/Pepijn" title="Pepijn">Pepijn</a>
+			<span>1 week, 4 days ago</span>
+			<img src="/img/User/001/104/32x32_A1222359024.jpg" width="32" height="32" class="talk_msg_avatar" alt="Pepijn" />		</div>
+		<div class="talk_msgs_msg_body">
+			<a href="/deReiger">@deReiger</a>, ik haat ook niet op Q-Tip, maar ik hoor het gewoon nog niet helemaal		<br />
+			<a class="respond" title="Respond to Pepijn" href="javascript:;" onClick="TwonesUtil.message.respond('Pepijn', '');">respond</a>		</div>
+	</div>
+	</div>
+		<div class="talk_msgs_msg" id="talk_message_6286">
+	<div>
+		<div class="talk_msgs_msg_title">
+			<a href="/lukas" title="lukas">lukas</a>
+			<span>1 week, 4 days ago</span>
+			<img src="/img/User/001/84/32x32_A1224618064.jpg" width="32" height="32" class="talk_msg_avatar" alt="lukas" />		</div>
+		<div class="talk_msgs_msg_body">
+			Love ANORAAK						<br />
+			<a class="respond" title="Respond to lukas" href="javascript:;" onClick="TwonesUtil.message.respond('lukas', '');">respond</a>		</div>
+	</div>
+	</div>
+		</form>
+</div>
+<div class="standard_prevnext">
+	<div style="display:none;">&lt; Previous </div>	<a href="/users/messages/1030/page:2/collection:friends" id="link749232270" onclick=" event.returnValue = false; return false;" class="standard_prevnext_next">Next &gt;</a><script type="text/javascript">
+//<![CDATA[
+Event.observe('link749232270', 'click', function(event) { new Ajax.Updater('talk_lines','/users/messages/1030/page:2/collection:friends', {asynchronous:true, evalScripts:true, onComplete:function(request, json) {Element.hide('talk_refresh_spinner');}, onLoading:function(request) {Element.show('talk_refresh_spinner');}, requestHeaders:['X-Update', 'talk_lines']}) }, false);
+//]]>
+</script></div>
+</div><div id="footer">
+	&copy; 2007-2008 Twones
+
+/ <a href="/pages/about" title="about">about</a>
+/ <a href="http://blog.twones.com/" title="blog">blog</a>
+
+		/ <a href="/pages/download" title="downloads">downloads</a>
+	/ <a href="/pages/api" title="api">api</a>
+/ <a href="/pages/faq" title="FAQ">faq</a>
+/ <a href="/pages/jobs" title="jobs">jobs</a>
+/ <a href="/pages/tos_privacy" title="ToS &amp; privacy">tos &amp; privacy</a>
+/ <a href="/pages/copyright-policy" title="copyright policy">copyright policy</a>
+
+</div>
+<style type='text/css'>@import url('http://s3.amazonaws.com/getsatisfaction.com/feedback/feedback.css');</style>
+<style type="text/css">
+/*
+a#fdbk_tab {
+	display:none;
+}
+*/
+</style>
+<script src='http://s3.amazonaws.com/getsatisfaction.com/feedback/feedback.js' type='text/javascript'></script>
+<script type="text/javascript" charset="utf-8">
+  GSFN.feedback('http://getsatisfaction.com/twones/feedback');
+</script>
+<script type="text/javascript">//<![CDATA[
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//]]></script>
+<script type="text/javascript">//<![CDATA[
+var pageTracker = _gat._getTracker("UA-52920-7");
+pageTracker._initData();
+pageTracker._trackPageview();
+//]]></script>
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qacct="p-f03IImCBvT3Fk";quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-f03IImCBvT3Fk" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-f03IImCBvT3Fk.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<a title="Clicky Web Analytics" href="http://getclicky.com/41696"><img alt="" src="http://in.getclicky.com/41696-db6.gif" /></a>
+<script type="text/javascript">
+if (navigator.userAgent.indexOf('Firefox') > -1) {
+	window.setTimeout(function testAddonVersion() {
+		var currVersion = "0.5.0"; // update this
+		var elm = document.getElementById('broadcast-line');
+		TwonesUtil.addOn.versionCheck(currVersion, elm);
+	}, 1000);
+}
+</script>
+</body>
+</html>

@@ -15,6 +15,7 @@ module Twonesr
     attr_accessor :password
     attr_accessor :cookie
     attr_accessor :token
+    attr_accessor :user_id
     
     def initialize(attributes={})
       unless attributes.empty?
@@ -50,14 +51,18 @@ module Twonesr
       response
     end
     
-    def retrieve_token
-      headers = { 'Cookie' => authentication_cookie }
-      response = REST.get(Twonesr::Routes.welcome_url, headers)
-      if response.ok? and (match = /TwonesUtil\.addOn\.authenticate\([^,]*, "([a-z0-9]*)"\);/.match(response.body))
+    def retrieve_account_information
+      response = get(Twonesr::Routes.welcome_url)
+      if response.ok?
+        match = /TwonesUtil\.addOn\.authenticate\([^,]*, "([a-z0-9]*)"\);/.match(response.body)
         @token = match[1]
+        
+        match = /\/img\/User\/\d*\/(\d*)\//.match(response.body)
+        @user_id = match[1]
       else
         @token = nil
-        raise Twonesr::ConnectionError.new("Failed to retrieve token", response)
+        @user_id = nil
+        raise Twonesr::ConnectionError.new("Failed to retrieve account information", response)
       end
     end
     
@@ -68,6 +73,11 @@ module Twonesr
         raise Twonesr::ConnectionError.new("Failed to post to the Twones API", response)
       end
       response
+    end
+    
+    def get(url)
+      headers = { 'Cookie' => authentication_cookie }
+      REST.get(url, headers)
     end
     
     def to_hash

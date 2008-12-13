@@ -15,11 +15,16 @@ describe "Twonesr" do
     Twonesr.playlist.should.be.kind_of(Twonesr::Playlist)
   end
   
+  it "should have global messages" do
+    Twonesr.messages.should == Twonesr.messages
+    Twonesr.messages.should.be.kind_of(Twonesr::Messages)
+  end
+  
   it "should establish a connection" do
     credentials = {:username => 'Jenny', :password => 'fromtheblock12'}
     connection = Twonesr::Connection.new(credentials)
     connection.expects(:authenticate)
-    connection.expects(:retrieve_token)
+    connection.expects(:retrieve_account_information)
     Twonesr::Connection.expects(:new).with(credentials).returns(connection)
     
     Twonesr.establish_connection(credentials)
@@ -29,7 +34,7 @@ end
 describe "Twonesr, when connected" do
   before do
     connection = Factory.connection.instantiate
-    connection.cookie = Response.attributes_for('successful-login')[1]['set-cookie']
+    connection.cookie = Response.attributes_for('successful-login')[1]['set-cookie'].first
     connection.token = '36288e7ec80fe74f52580a6eb0b712529a9824e7'
     
     Twonesr.connection = connection

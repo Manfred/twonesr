@@ -50,6 +50,14 @@ module Response
         'content-type' => ['text/html; charset=utf-8']
       },
       'Service not found (520)'
+    ],
+    'successfull-message-collection-friends' => [
+      200,
+      {
+        'date' => ['Tue, 09 Dec 2008 21:02:30 GMT'],
+        'content-type' => ['text/html; charset=utf-8']
+      },
+      File.read(file_fixture('message_collection_friends.txt'))
     ]
   }
   

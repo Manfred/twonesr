@@ -67,35 +67,37 @@ describe "An authenticated Connection" do
     @connection.authentication_cookie.should == 'CakeCookie[User]=Q2FrZQ%3D%3D.DqL6WjKugx8KnXVpbadaIJA1Q99UqbJQiNvMX1VkVnBPz7IzKThpmrHHND%2BVl0U75jK56IbIZCSgpUTctGOsPcovHWI%3D'
   end
   
-  it "should retrieve a token from the welcome page" do
+  it "should retrieve account information from the welcome page" do
     REST.expects(:get).with(
       'http://www.twones.com/users/firefox_installed?cmd=login&v=0.5.5.395',
       {'Cookie' => @connection.authentication_cookie }
     ).returns(Response.for('successful-token-retrieval'))
     
-    @connection.retrieve_token
+    @connection.retrieve_account_information
     @connection.should.be.connected
     @connection.token.should == '36288e7ec80fe74f52580a6eb0b712529a9824e7'
+    @connection.user_id.should == '1030'
   end
   
-  it "should not retrieve a token from the welcome page in the case of authentication failure" do
+  it "should not retrieve account information from the welcome page in the case of authentication failure" do
     REST.expects(:get).with(
       'http://www.twones.com/users/firefox_installed?cmd=login&v=0.5.5.395',
       {'Cookie' => @connection.authentication_cookie }
     ).returns(Response.for('failed-token-retrieval'))
     
     lambda {
-      @connection.retrieve_token
+      @connection.retrieve_account_information
     }.should.raise(Twonesr::ConnectionError)
     @connection.should.not.be.connected
     @connection.token.should.be.nil
+    @connection.user_id.should.be.nil
   end
 end
 
 describe "A connected Connection" do
   before do
     @connection = Factory.connection.instantiate
-    @connection.cookie = Response.attributes_for('successful-login')[1]['set-cookie']
+    @connection.cookie = Response.attributes_for('successful-login')[1]['set-cookie'].first
     @connection.token = '36288e7ec80fe74f52580a6eb0b712529a9824e7'
     Twonesr.connection = @connection
   end
